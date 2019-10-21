@@ -8,3 +8,15 @@ If you want to install the flutter engine on your Pi, do the following steps:
 2. `sudo cp ./libflutter_engine.so ./icudtl.dat /usr/lib`
 3. `sudo cp ./flutter_embedder.h /usr/include`
 4. Done! You can now compile and run flutter-pi on your Raspberry Pi.
+
+## build parameters
+The engine is built using tip-of-tree llvm/clang 10 and libcxx. The following args are passed to _gn_:
+```bash
+--target-triple arm-linux-gnueabihf
+--linux-cpu arm
+--runtime-mode debug
+--embedder-for-target
+--no-lto
+--target-os linux
+--arm-float-abi hard
+```
