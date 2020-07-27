@@ -2,7 +2,7 @@
 AC_INIT(flutter-pi, 0.1)
 AC_CONFIG_SRCDIR([flutter-pi.c])
 AC_CONFIG_HEADER([config.h])
-AM_INIT_AUTOMAKE(foreign flutter-pi main)
+AM_INIT_AUTOMAKE(foreign)
 
 # Checks for programs.
 AC_PROG_CC
