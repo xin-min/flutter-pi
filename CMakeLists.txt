@@ -146,5 +146,5 @@ target_compile_options(flutter-pi PRIVATE
   -DBUILD_SPIDEV_PLUGIN 
   -DBUILD_TEST_PLUGIN 
 )
-
+install(FILE flutter-pi.cmake)
 install(TARGETS flutter-pi RUNTIME DESTINATION bin)
