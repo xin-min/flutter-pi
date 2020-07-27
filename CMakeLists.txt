@@ -24,6 +24,10 @@
 
 cmake_minimum_required(VERSION 3.10.2)
 
+set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_C_COMPILER armv8-rpi3-linux-gnueabihf-gcc)
+set(CMAKE_CXX_COMPILER armv8-rpi3-linux-gnueabihf-g++)
+
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build, options are: Debug, Release, or MinSizeRel." FORCE)
     message(STATUS "CMAKE_BUILD_TYPE not set, defaulting to Release.")
@@ -146,5 +150,5 @@ target_compile_options(flutter-pi PRIVATE
   -DBUILD_SPIDEV_PLUGIN 
   -DBUILD_TEST_PLUGIN 
 )
-install(FILE flutter-pi.cmake)
+#install(FILE flutter-pi.cmake)
 install(TARGETS flutter-pi RUNTIME DESTINATION bin)
