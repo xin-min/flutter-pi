@@ -1,5 +1,5 @@
-CC = cc
-LD = cc
+CC = ${HOME}/x-tools/armv8-rpi3-linux-gnueabihf/bin/armv8-rpi3-linux-gnueabihf-gcc
+LD = ${HOME}/x-tools/armv8-rpi3-linux-gnueabihf/bin/armv8-rpi3-linux-gnueabihf-gcc
 REAL_CFLAGS = -I./include $(shell pkg-config --cflags gbm libdrm glesv2 egl) -DBUILD_TEXT_INPUT_PLUGIN -DBUILD_ELM327_PLUGIN -DBUILD_GPIOD_PLUGIN -DBUILD_SPIDEV_PLUGIN -DBUILD_TEST_PLUGIN -ggdb $(CFLAGS)
 REAL_LDFLAGS = $(shell pkg-config --libs gbm libdrm glesv2 egl) -lrt -lflutter_engine -lpthread -ldl $(LDFLAGS)
 
