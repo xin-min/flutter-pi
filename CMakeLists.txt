@@ -26,8 +26,8 @@ cmake_minimum_required(VERSION 3.10.2)
 set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
 #set(CMAKE_BUILD_TYPE Debug)
 #set(CMAKE_SYSTEM_NAME Linux)
-#set(CMAKE_C_COMPILER armv8-rpi3-linux-gnueabihf-gcc)
-#set(CMAKE_CXX_COMPILER armv8-rpi3-linux-gnueabihf-g++)
+set(CMAKE_C_COMPILER armv8-rpi3-linux-gnueabihf-gcc)
+set(CMAKE_CXX_COMPILER armv8-rpi3-linux-gnueabihf-g++)
 
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build, options are: Debug, Release, or MinSizeRel." FORCE)
@@ -38,60 +38,62 @@ project(flutter-pi LANGUAGES C)
 
 message(STATUS "Generator .............. ${CMAKE_GENERATOR}")
 message(STATUS "Build Type ............. ${CMAKE_BUILD_TYPE}")
+set(FLUTTER_ENGINE_LIBRARY ${HOME}work/flutter-pi/build/libflutter_engine.so)
 
-if(NOT FLUTTER_ENGINE_LIBRARY)
+#if(NOT FLUTTER_ENGINE_LIBRARY)
 
-  include(FetchContent)
+#  include(FetchContent)
 
-  if(NOT FLUTTER_ENGINE_SHA)
+#  if(NOT FLUTTER_ENGINE_SHA)
 
-    if(NOT CHANNEL)
-        set(CHANNEL "stable" CACHE STRING "Choose the channel, options are: master, dev, beta, stable" FORCE)
-        message(STATUS "Flutter Channel not set, defaulting to stable")
-    endif()
+#    if(NOT CHANNEL)
+#        set(CHANNEL "stable" CACHE STRING "Choose the channel, options are: master, dev, beta, stable" FORCE)
+#        message(STATUS "Flutter Channel not set, defaulting to stable")
+#    endif()
 
-    message(STATUS "Flutter Channel ........ ${CHANNEL}")
-
-    FetchContent_Declare(engine-version
-      URL https://raw.githubusercontent.com/flutter/flutter/${CHANNEL}/bin/internal/engine.version
-      DOWNLOAD_NAME engine.version
-      DOWNLOAD_NO_EXTRACT TRUE
-      DOWNLOAD_DIR ${CMAKE_BINARY_DIR}
-    )
-
-    FetchContent_GetProperties(engine-version)
-    if(NOT engine-version_POPULATED)
-        FetchContent_Populate(engine-version)
-        file(READ ${CMAKE_BINARY_DIR}/engine.version FLUTTER_ENGINE_SHA)
-        string(REPLACE "\n" "" FLUTTER_ENGINE_SHA ${FLUTTER_ENGINE_SHA})
-    else()
-        MESSAGE(FATAL "Unable to determine engine-version, please override FLUTTER_ENGINE_SHA")
-    endif()
-
-  endif()
-
-  message(STATUS "Engine SHA1 ............ ${FLUTTER_ENGINE_SHA}")
+#    message(STATUS "Flutter Channel ........ ${CHANNEL}")
+#
+#    FetchContent_Declare(engine-version
+#      URL https://raw.githubusercontent.com/flutter/flutter/${CHANNEL}/bin/internal/engine.version
+#      DOWNLOAD_NAME engine.version
+#      DOWNLOAD_NO_EXTRACT TRUE
+#      DOWNLOAD_DIR ${CMAKE_BINARY_DIR}
+#   )
+#
+#    FetchContent_GetProperties(engine-version)
+#    if(NOT engine-version_POPULATED)
+#        FetchContent_Populate(engine-version)
+#        file(READ ${CMAKE_BINARY_DIR}/engine.version FLUTTER_ENGINE_SHA)
+#        string(REPLACE "\n" "" FLUTTER_ENGINE_SHA ${FLUTTER_ENGINE_SHA})
+#    else()
+#        MESSAGE(FATAL "Unable to determine engine-version, please override FLUTTER_ENGINE_SHA")
+#    endif()
+#
+#  endif()
+#
+#  message(STATUS "Engine SHA1 ............ ${FLUTTER_ENGINE_SHA}")
 
   # Download and setup the Flutter Engine.
 
-  set(FLUTTER_EMBEDDER_ARTIFACTS_ZIP ${CMAKE_BINARY_DIR}/flutter_embedder_${FLUTTER_ENGINE_SHA}.zip)
-  set(FLUTTER_BUCKET_BASE "https://storage.googleapis.com/flutter_infra/flutter")
+#  set(FLUTTER_EMBEDDER_ARTIFACTS_ZIP ${CMAKE_BINARY_DIR}/flutter_embedder_${FLUTTER_ENGINE_SHA}.zip)
+#  set(FLUTTER_BUCKET_BASE "https://storage.googleapis.com/flutter_infra/flutter")
 
-  message(STATUS "FLUTTER_EMBEDDER_ARTIFACTS_ZIP ....... ${FLUTTER_EMBEDDER_ARTIFACTS_ZIP}")
+#  message(STATUS "FLUTTER_EMBEDDER_ARTIFACTS_ZIP ....... ${FLUTTER_EMBEDDER_ARTIFACTS_ZIP}")
 
-  if(NOT EXISTS ${FLUTTER_EMBEDDER_ARTIFACTS_ZIP})
-    file(DOWNLOAD
-      ${FLUTTER_BUCKET_BASE}/${FLUTTER_ENGINE_SHA}/linux-x64/linux-x64-embedder
-      ${FLUTTER_EMBEDDER_ARTIFACTS_ZIP}
-      SHOW_PROGRESS
-    )
-    execute_process(
-      COMMAND ${CMAKE_COMMAND} -E tar xzf ${FLUTTER_EMBEDDER_ARTIFACTS_ZIP}
-      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    )
-  endif()
+ # if(NOT EXISTS ${FLUTTER_EMBEDDER_ARTIFACTS_ZIP})
+ #   file(DOWNLOAD
+ #     ${FLUTTER_BUCKET_BASE}/${FLUTTER_ENGINE_SHA}/linux-x64/linux-x64-embedder
+ #     ${FLUTTER_EMBEDDER_ARTIFACTS_ZIP}
+ #     SHOW_PROGRESS
+ #   )
+ #   execute_process(
+ #     COMMAND ${CMAKE_COMMAND} -E tar xzf ${FLUTTER_EMBEDDER_ARTIFACTS_ZIP}
+ #     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+ #   )
+ # endif()
 
-  set(FLUTTER_ENGINE_LIBRARY ${CMAKE_BINARY_DIR}/libflutter_engine.so)
+
+#  set(FLUTTER_ENGINE_LIBRARY ${CMAKE_BINARY_DIR}/libflutter_engine.so)
 else()
   message(STATUS "Engine ................. ${FLUTTER_ENGINE_LIBRARY}")
 endif()
