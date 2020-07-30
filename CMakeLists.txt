@@ -140,6 +140,7 @@ target_link_libraries(flutter-pi
 
 target_include_directories(flutter-pi PRIVATE
   ${CMAKE_BINARY_DIR}
+  ${CMAKE_SOURCE_DIR}/build
   ${CMAKE_SOURCE_DIR}/include
   ${CMAKE_SOURCE_DIR}/include/plugins
   ${GBM_INCLUDE_DIRS} ${DRM_INCLUDE_DIRS}
