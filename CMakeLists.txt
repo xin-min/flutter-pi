@@ -94,9 +94,9 @@ set(FLUTTER_ENGINE_LIBRARY ${HOME}work/flutter-pi/build/libflutter_engine.so)
 
 
 #  set(FLUTTER_ENGINE_LIBRARY ${CMAKE_BINARY_DIR}/libflutter_engine.so)
-else()
-  message(STATUS "Engine ................. ${FLUTTER_ENGINE_LIBRARY}")
-endif()
+#else()
+message(STATUS "Engine ................. ${FLUTTER_ENGINE_LIBRARY}")
+#endif()
 
 include(ExternalProject)
 
