@@ -139,6 +139,7 @@ target_link_libraries(flutter-pi
 )
 
 target_include_directories(flutter-pi PRIVATE
+  ${HOME}/work/flutter-pi/build
   ${CMAKE_BINARY_DIR}
   ${CMAKE_SOURCE_DIR}/build
   ${CMAKE_SOURCE_DIR}/include
