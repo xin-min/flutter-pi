@@ -23,7 +23,7 @@
 #
 
 cmake_minimum_required(VERSION 3.10.2)
-
+set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
 #set(CMAKE_BUILD_TYPE Debug)
 #set(CMAKE_SYSTEM_NAME Linux)
 #set(CMAKE_C_COMPILER armv8-rpi3-linux-gnueabihf-gcc)
