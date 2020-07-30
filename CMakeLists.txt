@@ -148,6 +148,10 @@ target_include_directories(flutter-pi PRIVATE
   ${GLESV2_INCLUDE_DIRS} ${EGL_INCLUDE_DIRS}
 )
 
+target_include_directories(flutter-pi PUBLIC
+  ${CMAKE_BINARY_DIR}
+)
+
 target_compile_options(flutter-pi PRIVATE
   ${GBM_CFLAGS} ${DRM_CFLAGS}
   ${GLESV2_CFLAGS} ${EGL_CFLAGS}
@@ -158,8 +162,5 @@ target_compile_options(flutter-pi PRIVATE
   -DBUILD_TEST_PLUGIN 
 )
 #install(FILE flutter-pi.cmake)
-set_target_properties(mylib PROPERTIES PUBLIC_HEADER "flutter_embedder.h")
-INSTALL(TARGETS mylib 
-        PUBLIC_HEADER DESTINATION include)
 
 install(TARGETS flutter-pi RUNTIME DESTINATION bin)
