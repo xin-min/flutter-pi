@@ -158,4 +158,8 @@ target_compile_options(flutter-pi PRIVATE
   -DBUILD_TEST_PLUGIN 
 )
 #install(FILE flutter-pi.cmake)
+set_target_properties(mylib PROPERTIES PUBLIC_HEADER "flutter_embedder.h")
+INSTALL(TARGETS mylib 
+        PUBLIC_HEADER DESTINATION include)
+
 install(TARGETS flutter-pi RUNTIME DESTINATION bin)
