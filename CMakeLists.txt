@@ -28,7 +28,6 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
 #set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_C_COMPILER armv8-rpi3-linux-gnueabihf-gcc)
 set(CMAKE_CXX_COMPILER armv8-rpi3-linux-gnueabihf-g++)
-
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build, options are: Debug, Release, or MinSizeRel." FORCE)
     message(STATUS "CMAKE_BUILD_TYPE not set, defaulting to Release.")
@@ -133,7 +132,7 @@ endif()
 add_executable(flutter-pi ${FLUTTER_PI_SRC})
 
 target_link_libraries(flutter-pi
-  ${FLUTTER_ENGINE_LIBRARY} ${GPIOD_LDFLAGS} ${GBM_LDFLAGS}
+  -llibflutter_engine ${FLUTTER_ENGINE_LIBRARY} ${GPIOD_LDFLAGS} ${GBM_LDFLAGS}
   ${DRM_LDFLAGS} ${GLESV2_LDFLAGS} ${EGL_LDFLAGS}
   pthread dl
 )
