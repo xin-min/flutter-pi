@@ -21,7 +21,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-set_target_properties (libflutter_engine PROPERTIES VERSION 1.0 SOVERSION 1)
+#set_target_properties (libflutter_engine PROPERTIES VERSION 1.0 SOVERSION 1)
 cmake_minimum_required(VERSION 3.10.2)
 set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
 #set(CMAKE_BUILD_TYPE Debug)
@@ -38,7 +38,7 @@ project(flutter-pi LANGUAGES C)
 message(STATUS "Generator .............. ${CMAKE_GENERATOR}")
 message(STATUS "Build Type ............. ${CMAKE_BUILD_TYPE}")
 set(FLUTTER_ENGINE_LIBRARY /home/ubuntu/flutter-pi/libflutter_engine.so)
-
+set_target_properties (FLUTTER_ENGINE_LIBRARY PROPERTIES VERSION 1.0 SOVERSION 1)
 #if(NOT FLUTTER_ENGINE_LIBRARY)
 
 #  include(FetchContent)
