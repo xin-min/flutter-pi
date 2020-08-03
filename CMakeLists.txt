@@ -37,7 +37,7 @@ project(flutter-pi LANGUAGES C)
 
 message(STATUS "Generator .............. ${CMAKE_GENERATOR}")
 message(STATUS "Build Type ............. ${CMAKE_BUILD_TYPE}")
-set(FLUTTER_ENGINE_LIBRARY /home/ubuntu/work/flutter-pi/build/libflutter_engine.so)
+set(FLUTTER_ENGINE_LIBRARY /home/ubuntu/flutter-pi/libflutter_engine.so)
 
 #if(NOT FLUTTER_ENGINE_LIBRARY)
 
